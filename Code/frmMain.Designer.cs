@@ -30,9 +30,9 @@
         {
             this.lblCurrentSong = new System.Windows.Forms.Label();
             this.grpOutputOptions = new System.Windows.Forms.GroupBox();
-            this.radAll = new System.Windows.Forms.RadioButton();
-            this.radArtist = new System.Windows.Forms.RadioButton();
             this.radSong = new System.Windows.Forms.RadioButton();
+            this.radArtist = new System.Windows.Forms.RadioButton();
+            this.radAll = new System.Windows.Forms.RadioButton();
             this.numIntervall = new System.Windows.Forms.NumericUpDown();
             this.lblRefreshIntervall = new System.Windows.Forms.Label();
             this.lblSeconds = new System.Windows.Forms.Label();
@@ -62,17 +62,16 @@
             this.grpOutputOptions.TabStop = false;
             this.grpOutputOptions.Text = "Output options";
             // 
-            // radAll
+            // radSong
             // 
-            this.radAll.AutoSize = true;
-            this.radAll.Location = new System.Drawing.Point(6, 19);
-            this.radAll.Name = "radAll";
-            this.radAll.Size = new System.Drawing.Size(82, 17);
-            this.radAll.TabIndex = 0;
-            this.radAll.TabStop = true;
-            this.radAll.Text = "Artist - Song";
-            this.radAll.UseVisualStyleBackColor = true;
-            this.radAll.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
+            this.radSong.AutoSize = true;
+            this.radSong.Location = new System.Drawing.Point(6, 42);
+            this.radSong.Name = "radSong";
+            this.radSong.Size = new System.Drawing.Size(50, 17);
+            this.radSong.TabIndex = 2;
+            this.radSong.Text = "Song";
+            this.radSong.UseVisualStyleBackColor = true;
+            this.radSong.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
             // 
             // radArtist
             // 
@@ -81,22 +80,22 @@
             this.radArtist.Name = "radArtist";
             this.radArtist.Size = new System.Drawing.Size(48, 17);
             this.radArtist.TabIndex = 1;
-            this.radArtist.TabStop = true;
             this.radArtist.Text = "Artist";
             this.radArtist.UseVisualStyleBackColor = true;
             this.radArtist.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
             // 
-            // radSong
+            // radAll
             // 
-            this.radSong.AutoSize = true;
-            this.radSong.Location = new System.Drawing.Point(6, 42);
-            this.radSong.Name = "radSong";
-            this.radSong.Size = new System.Drawing.Size(50, 17);
-            this.radSong.TabIndex = 2;
-            this.radSong.TabStop = true;
-            this.radSong.Text = "Song";
-            this.radSong.UseVisualStyleBackColor = true;
-            this.radSong.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
+            this.radAll.AutoSize = true;
+            this.radAll.Checked = true;
+            this.radAll.Location = new System.Drawing.Point(6, 19);
+            this.radAll.Name = "radAll";
+            this.radAll.Size = new System.Drawing.Size(82, 17);
+            this.radAll.TabIndex = 0;
+            this.radAll.TabStop = true;
+            this.radAll.Text = "Artist - Song";
+            this.radAll.UseVisualStyleBackColor = true;
+            this.radAll.CheckedChanged += new System.EventHandler(this.radAll_CheckedChanged);
             // 
             // numIntervall
             // 

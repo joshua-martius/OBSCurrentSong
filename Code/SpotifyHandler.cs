@@ -25,12 +25,18 @@ namespace OBSCurrentSong
 
         public bool IsRunning { get => (_process != null && !_process.HasExited); }
 
-        public bool IsPlaying { get => !_process.MainWindowTitle.Contains("Spotify") && !_process.MainWindowTitle.Equals(""); }
+        public bool IsPlaying { 
+            get 
+            {
+                if (_process == null) return false;
+                return !_process.MainWindowTitle.Contains("Spotify") && !_process.MainWindowTitle.Equals(""); 
+            } 
+        }
 
         public override string ToString()
         {
             this.RefreshProcess();
-            if (!this.IsRunning || !this.IsPlaying) return "No song playing right now";
+            if (!this.IsRunning || !this.IsPlaying) return string.Empty;
             switch(_outputStyle)
             {
                 case OutputStyles.FULL:

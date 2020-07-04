@@ -29,13 +29,14 @@ namespace OBSCurrentSong
             _timer.Start();
 
             _spotify = new SpotifyHandler();
-            lblCurrentSong.Text = "Current output: " + _spotify.ToString();
+            this.RefreshLabel();
         }
 
         private void _timer_Tick(object sender, EventArgs e)
         {
-            lblCurrentSong.Text = "Current output: " + _spotify.ToString();
-            File.WriteAllText(outputFilePath, _spotify.ToString());
+            this.RefreshLabel();
+            if (_spotify.IsPlaying) File.WriteAllText(outputFilePath, _spotify.ToString());
+            else if (_spotify.IsRunning && (File.Exists(outputFilePath) && File.ReadAllText(outputFilePath).Length != 0)) File.WriteAllText(outputFilePath, "");
         }
 
         private void radAll_CheckedChanged(object sender, EventArgs e)
@@ -44,7 +45,10 @@ namespace OBSCurrentSong
             else if (radArtist.Checked) _spotify.OutputStyle = SpotifyHandler.OutputStyles.ARTIST_ONLY;
             else if (radSong.Checked) _spotify.OutputStyle = SpotifyHandler.OutputStyles.SONG_ONLY;
             else throw new Exception("No radio button checked (somehow)");
+            this.RefreshLabel();
         }
+
+        private void RefreshLabel() => lblCurrentSong.Text = "Current output: " + _spotify.ToString();
 
         private void numIntervall_ValueChanged(object sender, EventArgs e)
         {
