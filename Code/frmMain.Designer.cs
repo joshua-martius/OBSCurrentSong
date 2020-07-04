@@ -171,6 +171,7 @@
             this.Name = "frmMain";
             this.ShowIcon = false;
             this.Text = "OBS CurrentSong";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.grpOutputOptions.ResumeLayout(false);
             this.grpOutputOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numIntervall)).EndInit();

@@ -34,6 +34,11 @@ namespace OBSCurrentSong
 
         private void _timer_Tick(object sender, EventArgs e)
         {
+            if(File.Exists(outputFilePath))
+            {
+                string lastSong = File.ReadAllText(outputFilePath);
+                if (lastSong.Equals(_spotify.ToString())) return;
+            }
             this.RefreshLabel();
             if (_spotify.IsPlaying) File.WriteAllText(outputFilePath, _spotify.ToString());
             else if (_spotify.IsRunning && (File.Exists(outputFilePath) && File.ReadAllText(outputFilePath).Length != 0)) File.WriteAllText(outputFilePath, "");
@@ -58,6 +63,11 @@ namespace OBSCurrentSong
         private void lblVersion_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://github.com/y0sh1DE/OBSCurrentSong");
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (File.Exists(outputFilePath)) File.Delete(outputFilePath);
         }
     }
 }
